@@ -11,11 +11,16 @@
 
 @implementation ELCSlider
 
+@synthesize dismissPopoverOnTouchUp;
+
 -(id)initWithCoder:(NSCoder *)aDecoder {
 
 	if(self = [super initWithCoder:aDecoder]) {
         
+        self.dismissPopoverOnTouchUp = YES;
+        
 		[self addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
+		[self addTarget:self action:@selector(hidePopover) forControlEvents:UIControlEventTouchUpInside];
 		
 		sliderValueController = [[SliderValueViewController alloc] initWithNibName:@"SliderValueViewController" bundle:[NSBundle mainBundle]];
 		popoverController = [[UIPopoverController alloc] initWithContentViewController:sliderValueController];
@@ -25,7 +30,14 @@
     return self;	
 }
 
--(void)valueChanged {
+- (void)hidePopover {
+    if (self.dismissPopoverOnTouchUp) {
+        [popoverController dismissPopoverAnimated:YES];
+    }
+}
+
+
+- (void)valueChanged {
 	
 	[sliderValueController updateSliderValueTo:self.value];
 	

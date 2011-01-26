@@ -10,9 +10,12 @@
 #import "SliderValueViewController.h"
 
 @interface ELCSlider : UISlider {
+    BOOL dismissPopoverOnTouchUp;
 
 	UIPopoverController *popoverController;
 	SliderValueViewController *sliderValueController;
 }
+
+@property BOOL dismissPopoverOnTouchUp;
 
 @end
