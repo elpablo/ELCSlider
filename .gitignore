@@ -1,0 +1,29 @@
+# xcode noise
+
+build/*
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.pro.user
+moc*
+*.app*
+*.moc
+*.o
+Makefile
+qrc_*
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+
+# Visual Studio build
+*.ncb
+*.sln
+*.suo
+*.vcproj*
+*.idb
+*.pdb
+Release
+Debug
